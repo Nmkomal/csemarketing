@@ -1,0 +1,71 @@
+
+/* Custom Styles from React App */
+:root {
+    --primary: #FACC15;
+    --dark: #050505;
+}
+
+/* Global Reset for Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: 100%;
+    position: relative;
+    background-color: #ffffff;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #FACC15;
+}
+
+/* Utility Patterns */
+.bg-grid-pattern {
+    background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                      linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* Mobile Menu Transitions */
+.mobile-menu-active {
+    overflow: hidden !important;
+}
+
+/* Hide scrollbar for horizontal scrolling areas */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Helper for consistent card heights */
+.card-equal-height {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
