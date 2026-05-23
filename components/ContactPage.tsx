@@ -14,18 +14,24 @@ export const ContactPage: React.FC = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let value = e.target.value;
+    if (e.target.name === 'phone') {
+        value = value.replace(/\D/g, '').slice(0, 10);
+    }
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name || formData.phone.length !== 10) return;
 
     const text = `Hi CSE Marketing team,%0A%0A*New Inquiry from Contact Page*%0A%0A*Name:* ${formData.name}%0A*Phone:* ${formData.phone}%0A*Email:* ${formData.email || 'Not provided'}%0A*Service:* ${formData.service}%0A*Message:* ${formData.message || 'No message provided'}`;
     window.open(`https://wa.me/919711044849?text=${text}`, '_blank');
   };
 
   const googleMapsLink = "https://www.google.com/maps/place/Classify+Skill+Education+Digital+Marketing+course+in+Dwarka+Mor/@28.6192331,77.0294023,17z/data=!3m1!4b1!4m6!3m5!1s0x390d05d898504e09:0xd0612bb7c8e45632!8m2!3d28.6192284!4d77.0319772!16s%2Fg%2F11wx70wgb_?entry=ttu&g_ep=EgoyMDI2MDEyNS4wIKXMDSoASAFQAw%3D%3D";
+
+  const isPhoneValid = formData.phone.length === 10;
 
   return (
     <div className="bg-white min-h-screen selection:bg-yellow-400 selection:text-black">
@@ -45,7 +51,9 @@ export const ContactPage: React.FC = () => {
             
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-heading font-black mb-6 leading-[1.1] text-white max-w-4xl mx-auto tracking-tight">
               Let's Start a <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400">Conversation.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-yellow-400">
+                Conversation.
+              </span>
             </h1>
             <p className="text-base md:text-xl text-gray-400 font-medium max-w-2xl mx-auto leading-relaxed">
               Whether you're looking to scale your revenue or build a world-class digital presence, our experts are ready.
@@ -82,14 +90,14 @@ export const ContactPage: React.FC = () => {
                     </a>
 
                     {/* Email Card */}
-                    <a href="mailto:classifyskilleducation@gmail.com" className="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 group hover:border-yellow-400 transition-colors relative overflow-hidden h-full">
+                    <a href="mailto:info@csemarketing.com" className="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 group hover:border-yellow-400 transition-colors relative overflow-hidden h-full">
                         <div className="relative z-10 flex flex-col h-full justify-between min-h-[110px]">
                             <div className="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center mb-3 text-black border border-gray-200 group-hover:bg-yellow-400 group-hover:border-yellow-400 transition-colors">
                                 <Mail className="w-4 h-4" />
                             </div>
                             <div>
                                 <h3 className="text-[10px] font-bold text-gray-400 mb-0.5 uppercase tracking-wider">Email Us</h3>
-                                <p className="text-sm font-heading font-bold text-black break-all leading-tight">classifyskilleducation@gmail.com</p>
+                                <p className="text-sm font-heading font-bold text-black break-all leading-tight">info@csemarketing.com</p>
                             </div>
                         </div>
                     </a>
@@ -123,7 +131,7 @@ export const ContactPage: React.FC = () => {
                             <MapPin className="w-5 h-5" />
                         </div>
                         <div>
-                            <h3 className="text-lg font-heading font-bold text-black mb-1">Visit Our Lab</h3>
+                            <h3 className="text-lg font-heading font-bold text-black mb-1">Visit Our Office</h3>
                             <p className="text-gray-500 font-medium leading-relaxed text-xs sm:text-sm max-w-md">
                                 Pillar number 783, metro station, Dwarka Mor, Uttam Nagar, Bhagwati Garden, Nawada, New delhi, Delhi, 110059
                             </p>
@@ -175,7 +183,7 @@ export const ContactPage: React.FC = () => {
                                     value={formData.phone} 
                                     onChange={handleChange} 
                                     type="tel" 
-                                    placeholder="+91..." 
+                                    placeholder="Phone Number (10 digits) *" 
                                     className="w-full h-12 pl-10 pr-4 bg-white rounded-xl border-2 border-transparent focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-300 transition-all text-xs shadow-sm" 
                                 />
                             </div>
@@ -191,7 +199,7 @@ export const ContactPage: React.FC = () => {
                                 value={formData.email} 
                                 onChange={handleChange} 
                                 type="email" 
-                                placeholder="classifyskilleducation@gmail.com" 
+                                placeholder="info@csemarketing.com" 
                                 className="w-full h-12 pl-10 pr-4 bg-white rounded-xl border-2 border-transparent focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-300 transition-all text-xs shadow-sm" 
                             />
                         </div>
@@ -231,7 +239,8 @@ export const ContactPage: React.FC = () => {
                     <Button 
                         type="submit" 
                         variant="primary" 
-                        className="w-full h-14 rounded-xl text-base font-black shadow-xl shadow-yellow-400/20 hover:shadow-yellow-400/40 hover:-translate-y-1 transition-all duration-300"
+                        disabled={!isPhoneValid}
+                        className={`w-full h-14 rounded-xl text-base font-black shadow-xl shadow-yellow-400/20 hover:shadow-yellow-400/40 hover:-translate-y-1 transition-all duration-300 ${!isPhoneValid ? 'opacity-50 cursor-not-allowed bg-gray-300 text-gray-500 hover:bg-gray-300 hover:text-gray-500 hover:translate-y-0' : ''}`}
                     >
                         Send to WhatsApp <Send className="ml-2 w-4 h-4" />
                     </Button>

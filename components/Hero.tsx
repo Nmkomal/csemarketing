@@ -12,16 +12,22 @@ export const Hero: React.FC = () => {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let value = e.target.value;
+    if (e.target.name === 'phone') {
+        value = value.replace(/\D/g, '').slice(0, 10);
+    }
+    setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleWhatsApp = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.phone) return;
+    if (!formData.name || formData.phone.length !== 10) return;
 
     const text = `Hi CSE Marketing,%0A%0AMy Name: ${formData.name}%0AEmail: ${formData.email}%0APhone: ${formData.phone}%0AMessage: ${formData.message}%0A%0AI am interested in your services.`;
     window.open(`https://wa.me/919711044849?text=${text}`, '_blank');
   };
+
+  const isPhoneValid = formData.phone.length === 10;
 
   return (
     <section id="home" className="relative pt-24 pb-12 lg:pt-28 lg:pb-16 overflow-hidden bg-white">
@@ -149,7 +155,7 @@ export const Hero: React.FC = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     type="tel" 
-                    placeholder="Phone Number *" 
+                    placeholder="Phone Number (10 digits) *" 
                     className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-yellow-400 focus:bg-white focus:ring-4 focus:ring-yellow-100 transition-all text-sm font-bold placeholder:text-gray-400"
                   />
                 </div>
@@ -180,7 +186,8 @@ export const Hero: React.FC = () => {
                 <Button 
                     type="submit"
                     variant="primary" 
-                    className="w-full h-12 rounded-xl text-sm shadow-xl shadow-yellow-400/20 mt-1 hover:shadow-yellow-400/30"
+                    disabled={!isPhoneValid}
+                    className={`w-full h-12 rounded-xl text-sm shadow-xl shadow-yellow-400/20 mt-1 hover:shadow-yellow-400/30 ${!isPhoneValid ? 'opacity-50 cursor-not-allowed bg-gray-300 text-gray-500 hover:bg-gray-300 hover:text-gray-500' : ''}`}
                 >
                     Contact Now <Send className="ml-2 w-4 h-4" />
                 </Button>

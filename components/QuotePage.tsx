@@ -17,7 +17,6 @@ export const QuotePage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    // Real submission logic typically goes here
     
     // Open WhatsApp
     const name = (document.getElementById('quote-name') as HTMLInputElement).value;
@@ -53,11 +52,11 @@ export const QuotePage: React.FC = () => {
   }
 
   return (
-    <div className="bg-white pt-32 pb-24">
-      <section className="container mx-auto px-6 mb-20 text-center">
+    <div className="bg-white pt-28 pb-16">
+      <section className="container mx-auto px-6 mb-12 text-center">
         <div className="max-w-4xl mx-auto">
-          <h4 className="text-yellow-600 font-black uppercase tracking-[0.3em] text-sm mb-6">Custom Proposals</h4>
-          <h1 className="text-4xl sm:text-5xl md:text-8xl font-heading font-black mb-10 leading-[1.1]">
+          <h4 className="text-yellow-600 font-black uppercase tracking-[0.3em] text-sm mb-4">Custom Proposals</h4>
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-heading font-black mb-6 leading-[1.1]">
             Build Your <span className="text-yellow-500">Growth Plan</span>
           </h1>
           <p className="text-lg md:text-2xl text-gray-500 font-medium leading-relaxed">
@@ -69,85 +68,85 @@ export const QuotePage: React.FC = () => {
       <section className="container mx-auto px-6">
         <form onSubmit={handleSubmit} className="max-w-5xl mx-auto">
           {/* Service Selection */}
-          <div className="mb-20">
-            <h3 className="text-2xl font-black mb-10 flex items-center">
-              <span className="w-10 h-10 bg-black text-yellow-400 rounded-xl flex items-center justify-center mr-4 text-sm font-black">01</span>
+          <div className="mb-12">
+            <h3 className="text-xl font-black mb-6 flex items-center">
+              <span className="w-8 h-8 bg-black text-yellow-400 rounded-lg flex items-center justify-center mr-3 text-sm font-black">01</span>
               Select Services of Interest
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {SERVICES.map((s) => (
                 <div 
                   key={s.id}
                   onClick={() => toggleService(s.id)}
-                  className={`p-6 rounded-3xl border-2 cursor-pointer transition-all duration-300 flex items-center space-x-4 ${
+                  className={`p-5 rounded-2xl border-2 cursor-pointer transition-all duration-300 flex items-center space-x-3 ${
                     selectedServices.includes(s.id) 
                       ? 'border-yellow-400 bg-yellow-50' 
                       : 'border-gray-100 bg-white hover:border-gray-200 shadow-sm'
                   }`}
                 >
-                  <div className={`w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
+                  <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors flex-shrink-0 ${
                     selectedServices.includes(s.id) ? 'bg-black border-black' : 'border-gray-300'
                   }`}>
-                    {selectedServices.includes(s.id) && <Check className="w-4 h-4 text-yellow-400" />}
+                    {selectedServices.includes(s.id) && <Check className="w-3 h-3 text-yellow-400" />}
                   </div>
-                  <span className="font-bold text-sm uppercase tracking-wider">{s.title}</span>
+                  <span className="font-bold text-xs uppercase tracking-wider">{s.title}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Details & Budget */}
-          <div className="mb-20 grid lg:grid-cols-2 gap-16">
+          <div className="mb-12 grid lg:grid-cols-2 gap-10">
             <div>
-              <h3 className="text-2xl font-black mb-10 flex items-center">
-                <span className="w-10 h-10 bg-black text-yellow-400 rounded-xl flex items-center justify-center mr-4 text-sm font-black">02</span>
+              <h3 className="text-xl font-black mb-6 flex items-center">
+                <span className="w-8 h-8 bg-black text-yellow-400 rounded-lg flex items-center justify-center mr-3 text-sm font-black">02</span>
                 Company Details
               </h3>
-              <div className="space-y-6">
-                <input id="quote-name" type="text" placeholder="Full Name" required className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-400/20 transition-all" />
-                <input id="quote-email" type="email" placeholder="Work Email" required className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-400/20 transition-all" />
-                <input id="quote-company" type="text" placeholder="Company Name" required className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-400/20 transition-all" />
-                <input id="quote-website" type="url" placeholder="Website URL" className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-400/20 transition-all" />
+              <div className="space-y-4">
+                <input id="quote-name" type="text" placeholder="Full Name" required className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all text-sm" />
+                <input id="quote-email" type="email" placeholder="Work Email" required className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all text-sm" />
+                <input id="quote-company" type="text" placeholder="Company Name" required className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all text-sm" />
+                <input id="quote-website" type="url" placeholder="Website URL" className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all text-sm" />
               </div>
             </div>
             <div>
-              <h3 className="text-2xl font-black mb-10 flex items-center">
-                <span className="w-10 h-10 bg-black text-yellow-400 rounded-xl flex items-center justify-center mr-4 text-sm font-black">03</span>
+              <h3 className="text-xl font-black mb-6 flex items-center">
+                <span className="w-8 h-8 bg-black text-yellow-400 rounded-lg flex items-center justify-center mr-3 text-sm font-black">03</span>
                 Estimated Monthly Budget
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                 {['$1k - $5k', '$5k - $15k', '$15k - $50k', '$50k+'].map(budget => (
                   <label key={budget} className="relative cursor-pointer group">
                     <input type="radio" name="budget" value={budget} className="peer sr-only" />
-                    <div className="p-5 border-2 border-gray-100 rounded-2xl text-center font-bold peer-checked:border-yellow-400 peer-checked:bg-yellow-50 hover:bg-gray-50 transition-all">
+                    <div className="p-4 border-2 border-gray-100 rounded-xl text-center font-bold peer-checked:border-yellow-400 peer-checked:bg-yellow-50 hover:bg-gray-50 transition-all text-sm">
                       {budget}
                     </div>
                   </label>
                 ))}
               </div>
-              <textarea id="quote-goals" placeholder="Any specific goals or timeline?" rows={4} className="w-full px-6 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:outline-none focus:ring-4 focus:ring-yellow-400/20 transition-all resize-none"></textarea>
+              <textarea id="quote-goals" placeholder="Any specific goals or timeline?" rows={4} className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400/50 transition-all resize-none text-sm"></textarea>
             </div>
           </div>
 
           {/* Submit */}
-          <div className="bg-black p-8 md:p-16 rounded-[40px] md:rounded-[60px] text-white flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="bg-black p-8 rounded-[30px] text-white flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center text-center md:text-left flex-col md:flex-row">
-              <div className="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center mb-4 md:mb-0 md:mr-6 rotate-3">
-                <Rocket className="w-8 h-8 text-black" />
+              <div className="w-12 h-12 bg-yellow-400 rounded-xl flex items-center justify-center mb-3 md:mb-0 md:mr-4 rotate-3">
+                <Rocket className="w-6 h-6 text-black" />
               </div>
               <div>
-                <h4 className="text-2xl font-black">Ready to scale?</h4>
-                <p className="text-gray-400">Secure your free strategic analysis today.</p>
+                <h4 className="text-xl font-black">Ready to scale?</h4>
+                <p className="text-gray-400 text-sm">Secure your free strategic analysis today.</p>
               </div>
             </div>
-            <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto h-16 md:h-18 px-10 md:px-16 rounded-2xl shadow-2xl shadow-yellow-400/20">
-              Submit Request <ChevronRight className="ml-2 w-5 h-5" />
+            <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto h-14 px-10 rounded-xl shadow-xl shadow-yellow-400/20 text-base">
+              Submit Request <ChevronRight className="ml-2 w-4 h-4" />
             </Button>
           </div>
           
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-center text-gray-400 gap-4 md:space-x-6 text-xs font-bold uppercase tracking-[0.2em]">
-            <span className="flex items-center"><ShieldCheck className="w-4 h-4 mr-2 text-yellow-500" /> Data Protected</span>
-            <span className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-2 text-yellow-500" /> No-Obligation</span>
+          <div className="mt-6 flex flex-col md:flex-row items-center justify-center text-gray-400 gap-4 md:space-x-6 text-[10px] font-bold uppercase tracking-[0.2em]">
+            <span className="flex items-center"><ShieldCheck className="w-3 h-3 mr-2 text-yellow-500" /> Data Protected</span>
+            <span className="flex items-center"><CheckCircle2 className="w-3 h-3 mr-2 text-yellow-500" /> No-Obligation</span>
           </div>
         </form>
       </section>

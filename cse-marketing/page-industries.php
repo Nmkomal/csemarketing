@@ -4,15 +4,15 @@
 get_header(); 
 ?>
 
-<div class="bg-white pt-32 min-h-screen w-full overflow-x-hidden">
-      <!-- 1. Header Section -->
-      <section class="container mx-auto px-6 mb-24 text-center">
-        <h4 class="text-yellow-600 font-black uppercase tracking-[0.3em] text-sm mb-6">Our Expertise</h4>
-        <h1 class="text-5xl md:text-8xl font-heading font-black mb-10 leading-[1.1]">
+<div class="bg-white pt-24 md:pt-32 min-h-screen w-full overflow-x-hidden">
+      <!-- 1. Header Section - Compacted -->
+      <section class="container mx-auto px-6 mb-16 text-center">
+        <h4 class="text-yellow-600 font-black uppercase tracking-[0.3em] text-sm mb-4">Our Expertise</h4>
+        <h1 class="text-4xl md:text-7xl font-heading font-black mb-6 leading-[1.1]">
           Industries We <br />
           <span class="text-yellow-500">Transform.</span>
         </h1>
-        <p class="text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
+        <p class="text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed">
           We understand your market. Here is exactly how we help businesses in your industry grow.
         </p>
       </section>
@@ -170,6 +170,49 @@ get_header();
                 <h3 class="text-xl font-black mb-4 font-heading"><?php echo $f['title']; ?></h3>
                 <p class="text-gray-500 group-hover:text-gray-400 leading-relaxed font-medium"><?php echo $f['desc']; ?></p>
               </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </section>
+      
+      <!-- 4. Simplified Services Grid - Compacted -->
+      <section class="bg-gray-50 py-16 border-y border-gray-100">
+        <div class="container mx-auto px-6 max-w-7xl">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-heading font-black mb-4 text-black">
+              Our <span class="text-yellow-500">Services</span>
+            </h2>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <?php 
+            $services = [
+                ['id' => 'smm', 'title' => 'SMM', 'icon' => 'share-2'],
+                ['id' => 'leads', 'title' => 'Leads Generation', 'icon' => 'mouse-pointer-2'],
+                ['id' => 'seo', 'title' => 'SEO', 'icon' => 'search'],
+                ['id' => 'web-design', 'title' => 'Website Design', 'icon' => 'layout'],
+                ['id' => 'graphic-design', 'title' => 'Graphic Designing', 'icon' => 'pen-tool'],
+                ['id' => 'ppc', 'title' => 'PPC', 'icon' => 'target'],
+                ['id' => 'video-shoot', 'title' => 'Video Shoot', 'icon' => 'video'],
+                ['id' => 'influencer', 'title' => 'Influencer Marketing', 'icon' => 'user-plus'],
+                ['id' => 'meta-ads', 'title' => 'Meta Ads', 'icon' => 'facebook'],
+                ['id' => 'branding', 'title' => 'Branding', 'icon' => 'palette'],
+                ['id' => 'video-edit', 'title' => 'Video Editing', 'icon' => 'scissors'],
+                ['id' => 'app-dev', 'title' => 'App Development', 'icon' => 'smartphone'],
+            ];
+            foreach($services as $service): 
+                $link = home_url('/' . $service['id']);
+            ?>
+              <a href="<?php echo $link; ?>" class="group relative bg-white border border-gray-100 rounded-3xl p-6 flex flex-col items-center text-center hover:border-yellow-400 hover:shadow-xl transition-all duration-300 overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-50 rounded-full blur-2xl -mr-16 -mt-16 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                
+                <div class="w-12 h-12 bg-gray-50 rounded-2xl flex items-center justify-center mb-3 group-hover:bg-yellow-400 transition-all duration-300 shrink-0 relative z-10 shadow-sm">
+                  <i data-lucide="<?php echo $service['icon']; ?>" class="w-6 h-6 text-black"></i>
+                </div>
+                <h3 class="text-sm md:text-base font-black text-black group-hover:text-yellow-600 transition-colors relative z-10">
+                  <?php echo $service['title']; ?>
+                </h3>
+              </a>
             <?php endforeach; ?>
           </div>
         </div>

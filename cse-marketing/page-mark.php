@@ -191,7 +191,7 @@ get_header();
               ['name' => 'Akshay Singh', 'role' => 'Co-Founder', 'image' => 'https://i.postimg.cc/52xQWXkF/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(1).png', 'bio' => 'Digital Marketing & Operations Expert', 'experience' => '6+ Years'],
               ['name' => 'Darshan Prajapati', 'role' => 'Marketing Head', 'image' => 'https://i.postimg.cc/BZMdBk9c/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(2).png', 'bio' => 'Ads Manager & Growth Strategist', 'experience' => '4+ Years'],
               ['name' => 'Mohit Deswal', 'role' => 'Video Editor', 'image' => 'https://i.postimg.cc/nL02B8NM/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(6).jpg', 'bio' => 'Visual Storyteller & Post-Production Specialist', 'experience' => '3+ Years'],
-              ['name' => 'Komal Mukhiya', 'role' => 'Marketing Manager', 'image' => 'https://i.postimg.cc/5N4cM11g/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(5).jpg', 'bio' => 'Campaign Strategy & Client Success', 'experience' => '4+ Years'],
+              ['name' => 'Komal Mukhiya', 'role' => 'Marketing Manager', 'image' => 'https://i.postimg.cc/8PjzpCWp/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(7)-(1).jpg', 'bio' => 'Campaign Strategy & Client Success', 'experience' => '4+ Years'],
               ['name' => 'Sonu Kumar', 'role' => 'Marketing Coordinator', 'image' => 'https://i.postimg.cc/j2n8Qgrq/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(2).jpg', 'bio' => 'Operations & Project Management', 'experience' => '2+ Years'],
             ];
             foreach($team as $member): ?>
@@ -220,32 +220,33 @@ get_header();
     <!-- Our Classified Process Section -->
     <section class="py-16 bg-black text-white overflow-hidden">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Our <span class="text-yellow-400">Classified</span> Process
+        <div class="text-center mb-16">
+          <span class="text-yellow-400 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">How We Work</span>
+          <h2 class="text-3xl md:text-4xl font-heading font-black mb-6">
+            Our Proven <span class="text-yellow-400">Process</span>
           </h2>
-          <p class="text-gray-400 max-w-xl mx-auto text-base">
-            Success isn't accidental. It's the result of a rigorous, repeatable methodology refined over hundreds of campaigns.
+          <p class="text-gray-400 max-w-xl mx-auto text-lg font-medium leading-relaxed">
+            A simple, transparent workflow designed to get you results fast.
           </p>
         </div>
         <!-- Grid: Mobile 1 col (full width), Desktop 4 cols -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 relative">
           <!-- Connector Line: Hidden on Mobile/Tablet -->
-          <div class="hidden lg:block absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent -z-0"></div>
+          <div class="hidden lg:block absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent -z-0"></div>
           <?php 
           $steps = [
-              ['num' => '01', 'title' => 'We Plan', 'desc' => 'We study your business and plan the best strategy.'],
-              ['num' => '02', 'title' => 'We Create', 'desc' => 'We design the ads, posts, or website for you.'],
-              ['num' => '03', 'title' => 'We Launch', 'desc' => 'We put everything live to reach your customers.'],
-              ['num' => '04', 'title' => 'You Grow', 'desc' => 'You get more leads, sales, and popularity.'],
+              ['num' => '01', 'title' => 'Consultation', 'desc' => 'We analyze your business goals and identify opportunities for growth.'],
+              ['num' => '02', 'title' => 'Strategy', 'desc' => 'We create a custom roadmap tailored to your specific market and audience.'],
+              ['num' => '03', 'title' => 'Execution', 'desc' => 'Our experts implement the plan using cutting-edge tools and creativity.'],
+              ['num' => '04', 'title' => 'Result', 'desc' => 'We monitor results and refine strategies to maximize your ROI.'],
           ];
           foreach($steps as $st): ?>
-          <div class="relative z-10 flex flex-col items-center text-center w-full">
-              <div class="w-16 h-16 rounded-full bg-gray-900 border-2 border-yellow-400 flex items-center justify-center text-2xl font-bold text-yellow-400 mb-6 shadow-[0_0_20px_rgba(250,204,21,0.2)]">
+          <div class="relative z-10 flex flex-col items-center text-center w-full group">
+              <div class="w-20 h-20 rounded-full bg-gray-900 border-4 border-gray-800 flex items-center justify-center text-2xl font-black text-yellow-400 mb-8 shadow-[0_0_30px_rgba(250,204,21,0.15)] group-hover:border-yellow-400/50 transition-colors duration-300">
                 <?php echo $st['num']; ?>
               </div>
-              <h3 class="text-xl font-bold mb-3"><?php echo $st['title']; ?></h3>
-              <p class="text-sm text-gray-400 leading-relaxed max-w-xs mx-auto"><?php echo $st['desc']; ?></p>
+              <h3 class="text-xl font-bold mb-4"><?php echo $st['title']; ?></h3>
+              <p class="text-sm text-gray-400 leading-relaxed max-w-xs mx-auto font-medium px-2"><?php echo $st['desc']; ?></p>
             </div>
           <?php endforeach; ?>
         </div>

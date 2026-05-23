@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle2, TrendingUp } from 'lucide-react';
 
 export const CTA: React.FC = () => {
   return (
-    <section id="home-contact" className="py-20 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+    <section id="home-contact" className="py-16 bg-gray-50 relative overflow-hidden border-t border-gray-100">
        
        {/* Full Width Background Decor */}
        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-400/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>

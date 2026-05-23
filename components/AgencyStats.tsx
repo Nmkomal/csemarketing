@@ -2,7 +2,12 @@
 import React from 'react';
 import { Briefcase, Users, Clock, Headphones } from 'lucide-react';
 
-export const AgencyStats: React.FC = () => {
+interface AgencyStatsProps {
+  className?: string;
+  hideDecor?: boolean;
+}
+
+export const AgencyStats: React.FC<AgencyStatsProps> = ({ className = "bg-white", hideDecor = false }) => {
   const stats = [
     { label: 'Projects Completed', value: '170+', icon: Briefcase },
     { label: 'Client Satisfaction', value: '98%', icon: Users },
@@ -11,9 +16,13 @@ export const AgencyStats: React.FC = () => {
   ];
 
   return (
-    <section className="py-16 bg-white text-black relative overflow-hidden border-t border-gray-100">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-gray-100 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2"></div>
+    <section className={`py-12 text-black relative overflow-hidden border-t border-gray-100 ${className}`}>
+      {!hideDecor && (
+        <>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gray-100 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2"></div>
+        </>
+      )}
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">

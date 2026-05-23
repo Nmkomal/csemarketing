@@ -32,6 +32,30 @@ jQuery(document).ready(function($) {
         }
     });
 
+    // Phone Validation Logic for all forms
+    $('input[name="phone"]').on('input', function() {
+        let val = $(this).val().replace(/\D/g, '').substring(0, 10);
+        $(this).val(val);
+        
+        const $form = $(this).closest('form');
+        const $btn = $form.find('button[type="submit"]');
+        
+        if (val.length === 10) {
+            $btn.prop('disabled', false).removeClass('opacity-50 cursor-not-allowed');
+        } else {
+            $btn.prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
+        }
+    });
+    
+    // Initial check for all phone inputs on page load
+    $('input[name="phone"]').each(function() {
+        const $form = $(this).closest('form');
+        const $btn = $form.find('button[type="submit"]');
+        if ($(this).val().length !== 10) {
+            $btn.prop('disabled', true).addClass('opacity-50 cursor-not-allowed');
+        }
+    });
+
     // WhatsApp Form Handler (Contact Page & Home)
     $('.whatsapp-form').on('submit', function(e) {
         e.preventDefault();
@@ -42,8 +66,8 @@ jQuery(document).ready(function($) {
         const message = form.find('textarea[name="message"]').val();
         const service = form.find('select[name="service"]').val() || 'General Inquiry';
 
-        if (!name || !phone) {
-            alert('Please fill in Name and Phone number.');
+        if (!name || !phone || phone.length !== 10) {
+            alert('Please fill in Name and a valid 10-digit Phone number.');
             return;
         }
 
@@ -77,15 +101,12 @@ jQuery(document).ready(function($) {
         $('.faq-item').not($parent).removeClass('border-yellow-400 bg-gray-50 shadow-lg').addClass('border-gray-100');
         $('.faq-answer').not($answer).slideUp();
         $('.faq-item').not($parent).find('.faq-icon-wrapper').removeClass('bg-black text-yellow-400').addClass('bg-gray-100 text-black');
-        $('.faq-item').not($parent).find('.faq-icon').attr('data-lucide', 'plus'); // Note: Lucide replaces SVG, so we might need to toggle classes on SVGs instead if re-rendering, but simpler to just toggle visibility
-        // Since Lucide replaces tags, we toggle the SVGs visibility if possible or just rely on CSS. 
-        // Simpler approach for jQuery + Lucide: Toggle a specific class that CSS uses, or just accept the icon won't change shape dynamically without re-running Lucide.
-        // Let's just toggle classes for styling.
+        $('.faq-item').not($parent).find('.faq-icon').attr('data-lucide', 'plus');
         
         if ($answer.is(':visible')) {
             $answer.slideUp();
             $parent.removeClass('border-yellow-400 bg-gray-50 shadow-lg').addClass('border-gray-100');
-            $parent.find('.faq-icon-wrapper').removeClass('bg-black text-yellow-400').addClass('bg-gray-100 text-black');
+            $parent.find('.faq-icon-wrapper').removeClass('bg-gray-100 text-black').addClass('bg-black text-yellow-400');
         } else {
             $answer.slideDown();
             $parent.removeClass('border-gray-100').addClass('border-yellow-400 bg-gray-50 shadow-lg');
@@ -137,7 +158,7 @@ jQuery(document).ready(function($) {
         
         window.open(`https://wa.me/919711044849?text=${text}`, '_blank');
         
-        // Show Success Message (Simple alert or DOM replacement)
+        // Show Success Message
         $(this).parent().html(`
             <div class="max-w-xl w-full mx-auto text-center bg-gray-50 p-10 md:p-24 rounded-[40px] md:rounded-[60px] border border-gray-100 shadow-2xl">
               <div class="w-24 h-24 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-10 shadow-lg animate-bounce-slow">
@@ -152,6 +173,109 @@ jQuery(document).ready(function($) {
         `);
         if(typeof lucide !== 'undefined') lucide.createIcons();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ---------------------------------------------------------
+    // Seamless Infinite Loop Slider Logic (JS + CSS Transform)
+    // ---------------------------------------------------------
+    const $track = $('#testimonial-track');
+    const $slides = $track.find('.testimonial-slide');
+    const totalOriginalSlides = $slides.length;
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+    // We clone the first 2 slides (since max desktop view is 2) and append to end
+    // This allows us to slide 'past' the end, then silently jump back to start
+    if(totalOriginalSlides > 0) {
+        const $clones = $slides.slice(0, 2).clone(true).addClass('cloned-slide');
+        $track.append($clones);
+    }
+
+    function getItemsPerView() {
+        return window.innerWidth >= 768 ? 2 : 1;
+    }
+
+    function updateSlider(withTransition = true) {
+        const itemsPerView = getItemsPerView();
+        const percentage = 100 / itemsPerView;
+        const translateX = -(currentIndex * percentage);
+        
+        if (withTransition) {
+            $track.css('transition', 'transform 0.5s ease-in-out');
+        } else {
+            $track.css('transition', 'none');
+        }
+        
+        $track.css('transform', `translateX(${translateX}%)`);
+    }
+
+    $('#testi-next').on('click', function() {
+        if (isTransitioning) return;
+        
+        const itemsPerView = getItemsPerView();
+        isTransitioning = true;
+        currentIndex += itemsPerView;
+        updateSlider(true);
+
+        // Check if we hit the clones
+        if (currentIndex >= totalOriginalSlides) {
+            // Wait for transition to finish (500ms), then reset without transition
+            setTimeout(function() {
+                $track.css('transition', 'none');
+                currentIndex = currentIndex - totalOriginalSlides;
+                // Re-calculate transform immediately
+                const percentage = 100 / itemsPerView;
+                const translateX = -(currentIndex * percentage);
+                $track.css('transform', `translateX(${translateX}%)`);
+                
+                isTransitioning = false;
+            }, 500);
+        } else {
+            setTimeout(function() {
+                isTransitioning = false;
+            }, 500);
+        }
+    });
+
+    $('#testi-prev').on('click', function() {
+        if (isTransitioning) return;
+        
+        const itemsPerView = getItemsPerView();
+        isTransitioning = true;
+
+        if (currentIndex === 0) {
+            // Jump to the end (virtual position) instantly
+            $track.css('transition', 'none');
+            currentIndex = totalOriginalSlides;
+            const percentage = 100 / itemsPerView;
+            const startX = -(currentIndex * percentage);
+            $track.css('transform', `translateX(${startX}%)`);
+
+            // Force reflow
+            $track[0].offsetHeight; 
+
+            // Slide back to the real item
+            currentIndex -= itemsPerView;
+            updateSlider(true);
+            
+            setTimeout(function() {
+                isTransitioning = false;
+            }, 500);
+        } else {
+            currentIndex -= itemsPerView;
+            if (currentIndex < 0) currentIndex = 0; // Safety
+            updateSlider(true);
+            setTimeout(function() {
+                isTransitioning = false;
+            }, 500);
+        }
+    });
+
+    $(window).on('resize', function() {
+        // Reset to 0 on resize to prevent calculation errors
+        $track.css('transition', 'none');
+        currentIndex = 0;
+        updateSlider(false);
     });
 
 });

@@ -93,7 +93,7 @@ export const SERVICE_DETAILS: Record<string, any> = {
     process: ['Scripting', 'Filming', 'Direction', 'Production'],
     tools: ['Professional Cameras', 'Lights', 'Mics'],
     benefits: ['High quality look', 'Engaging content', 'Showcase products better'],
-    result: 'Cinematic videos for your brand.'
+    result: 'Cinematic videos for your brand.',
   },
   'influencer': {
     title: 'Influencer Marketing',
@@ -251,10 +251,8 @@ export const INDUSTRIES: Industry[] = [
 export const TEAM = [
   { name: 'Shweta Sharma', role: 'Founder', image: 'https://i.postimg.cc/ZK421Tjh/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post.png', bio: 'Visionary Leader & Strategist', experience: '7+ Years' },
   { name: 'Akshay Singh', role: 'Co-Founder', image: 'https://i.postimg.cc/52xQWXkF/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(1).png', bio: 'Digital Marketing & Operations Expert', experience: '6+ Years' },
-  { name: 'Darshan Prajapati', role: 'Marketing Head', image: 'https://i.postimg.cc/BZMdBk9c/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(2).png', bio: 'Ads Manager & Growth Strategist', experience: '4+ Years' },
   { name: 'Mohit Deswal', role: 'Video Editor', image: 'https://i.postimg.cc/nL02B8NM/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(6).jpg', bio: 'Visual Storyteller & Post-Production Specialist', experience: '3+ Years' },
-  { name: 'Komal Mukhiya', role: 'Marketing Manager', image: 'https://i.postimg.cc/5N4cM11g/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(5).jpg', bio: 'Campaign Strategy & Client Success', experience: '4+ Years' },
-  { name: 'Sonu Kumar', role: 'Marketing Coordinator', image: 'https://i.postimg.cc/j2n8Qgrq/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(2).jpg', bio: 'Operations & Project Management', experience: '2+ Years' },
+  { name: 'Komal Mukhiya', role: 'Marketing Manager', image: 'https://i.postimg.cc/8PjzpCWp/Yellow-and-Brown-Illustrated-Makar-Sankranti-Greetings-Instagram-Post-(7)-(1).jpg', bio: 'Campaign Strategy & Client Success', experience: '2 Years' },
 ];
 
 export const FAQS = [
@@ -303,7 +301,7 @@ export const PROCESS_STEPS: Step[] = [
   { number: '01', title: 'Consultation', description: 'We analyze your business goals and identify opportunities for growth.' },
   { number: '02', title: 'Strategy', description: 'We create a custom roadmap tailored to your specific market and audience.' },
   { number: '03', title: 'Execution', description: 'Our experts implement the plan using cutting-edge tools and creativity.' },
-  { number: '04', title: 'Optimization', description: 'We monitor results and refine strategies to maximize your ROI.' }
+  { number: '04', title: 'Result', description: 'We monitor results and refine strategies to maximize your ROI.' }
 ];
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -340,34 +338,66 @@ export const CASE_STUDIES: CaseStudy[] = [
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: '1',
-    author: 'Rahul Mehta',
-    role: 'CEO',
-    company: 'TechFlow',
-    content: 'CSE Marketing transformed our online presence. The results speak for themselves.',
-    avatar: 'https://i.pravatar.cc/150?img=11'
+    author: 'Arham Interior',
+    role: 'Client',
+    company: 'Interior Design',
+    content: 'CSE Marketing handled our social media marketing and paid ads with a clear focus on lead generation. We started receiving quality enquiries regularly, and our brand visibility improved significantly. Their strategy is practical and result-driven.',
+    avatar: 'https://i.pravatar.cc/150?img=1'
   },
   {
     id: '2',
-    author: 'Sarah Jenkins',
-    role: 'Founder',
-    company: 'StyleHub',
-    content: 'The team is incredibly creative and data-driven. Highly recommended!',
+    author: 'The New Nari',
+    role: 'Client',
+    company: 'Fashion & Clothing Brand',
+    content: 'As a growing fashion brand, we needed strong social media presence and sales support. CSE Marketing helped us with SMM and performance campaigns that resulted in increased engagement and consistent sales. Very professional execution.',
     avatar: 'https://i.pravatar.cc/150?img=5'
   },
   {
     id: '3',
-    author: 'David Chen',
-    role: 'Director',
-    company: 'Urban Eat',
-    content: 'We saw immediate growth in our leads after partnering with CSE.',
+    author: 'OSR Foundation',
+    role: 'Client',
+    company: 'NGO / Social Organization',
+    content: 'CSE Marketing developed our website and managed our social media platforms. The website looks professional and has helped us reach more people online. Their team understood our purpose and delivered exactly what we needed.',
     avatar: 'https://i.pravatar.cc/150?img=3'
   },
   {
     id: '4',
-    author: 'Priya Sharma',
-    role: 'Owner',
-    company: 'Decor Dreams',
-    content: 'Professional, timely, and effective. They truly understand digital marketing.',
+    author: 'Omkar Interior',
+    role: 'Client',
+    company: 'Interior Services',
+    content: 'CSE Marketing managed our Instagram, video editing, and lead generation. The content quality and reels performance improved a lot, and we started getting genuine enquiries. The team works fast and understands the interior market well.',
+    avatar: 'https://i.pravatar.cc/150?img=8'
+  },
+  {
+    id: '5',
+    author: 'Chaap & Curry Junction',
+    role: 'Client',
+    company: 'Food & Restaurant Brand',
+    content: 'CSE Marketing supported our brand with creative video editing and social media growth. Our reels started getting better reach, and our local audience engagement increased. Their content helped us build a strong food brand presence online.',
+    avatar: 'https://i.pravatar.cc/150?img=11'
+  },
+  {
+    id: '6',
+    author: 'Wear Vardaan',
+    role: 'Client',
+    company: 'Fashion & Clothing Brand',
+    content: 'CSE Marketing created our website and helped generate sales through digital channels. The website design is clean, user-friendly, and optimized for conversions. We saw a positive impact on our online sales.',
     avatar: 'https://i.pravatar.cc/150?img=9'
+  },
+  {
+    id: '7',
+    author: 'Urban Lifestyle Store',
+    role: 'Client',
+    company: 'Retail & Lifestyle',
+    content: 'CSE Marketing provided complete digital marketing support including strategy, creatives, and ads. Everything was well-planned and performance-focused. We could clearly see improvement in reach, engagement, and enquiries.',
+    avatar: 'https://i.pravatar.cc/150?img=12'
+  },
+  {
+    id: '8',
+    author: 'Bloomify Studio',
+    role: 'Client',
+    company: 'Startup / Creative Brand',
+    content: 'CSE Marketing helped us build our digital presence from the ground up. From content creation to paid campaigns, everything was handled professionally. A reliable partner for brands looking for real growth.',
+    avatar: 'https://i.pravatar.cc/150?img=32'
   }
 ];

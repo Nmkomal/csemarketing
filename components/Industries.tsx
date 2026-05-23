@@ -10,9 +10,9 @@ interface IndustriesProps {
 
 export const Industries: React.FC<IndustriesProps> = ({ onNavigate }) => {
   return (
-    <section id="industries-section" className="py-24 bg-gray-50 border-y border-gray-100">
+    <section id="industries-section" className="py-16 bg-gray-50 border-y border-gray-100">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <h4 className="text-yellow-600 font-bold uppercase tracking-[0.2em] text-xs mb-3 block">Market Focus</h4>
           <h2 className="text-3xl md:text-5xl font-heading font-black mb-6">Industries We <span className="text-yellow-500">Transform.</span></h2>
           <p className="text-lg text-gray-600 font-medium">
@@ -20,7 +20,7 @@ export const Industries: React.FC<IndustriesProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-10">
           {INDUSTRIES.map((industry) => (
             <div 
               key={industry.id} 

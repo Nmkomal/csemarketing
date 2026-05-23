@@ -11,7 +11,7 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ onNavigate }) => {
   return (
-    <section id="about-section" className="py-24 bg-white relative">
+    <section id="about-section" className="py-16 bg-white relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
       
       <div className="container mx-auto px-6 lg:px-12 max-w-7xl">

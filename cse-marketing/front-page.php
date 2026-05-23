@@ -106,22 +106,28 @@ get_header();
     </section>
 
     <!-- BRANDS TICKER -->
-    <section class="py-10 bg-white border-y border-gray-100 overflow-hidden">
+    <section class="py-8 bg-white border-y border-gray-100 overflow-hidden">
         <div class="container mx-auto px-6">
-            <p class="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-8">Trusted By Global Innovators</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-                <span class="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">TECHNO</span>
-                <span class="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">GrowthX</span>
-                <span class="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">Aura</span>
-                <span class="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">PRISM.</span>
-                <span class="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">MODERN</span>
-                <span class="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">ELITE</span>
+            <p class="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-6">Trusted By Global Innovators</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+                <?php 
+                $brands = [
+                    "https://i.postimg.cc/NMxMJWtS/1.png",
+                    "https://i.postimg.cc/ZqQR1ryh/2.png",
+                    "https://i.postimg.cc/g2w1g8dw/3.png",
+                    "https://i.postimg.cc/7brJjSdq/4.png",
+                    "https://i.postimg.cc/wjyB8wDT/5.png",
+                    "https://i.postimg.cc/L6yV08VF/6.png"
+                ];
+                foreach($brands as $logo): ?>
+                    <img src="<?php echo $logo; ?>" alt="Partner Brand" class="h-10 md:h-14 w-auto object-contain hover:scale-110 transition-transform duration-300" loading="lazy" />
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
 
     <!-- AGENCY STATS -->
-    <section class="py-16 bg-white text-black relative overflow-hidden border-t border-gray-100">
+    <section class="py-12 bg-white text-black relative overflow-hidden border-t border-gray-100">
         <div class="absolute top-0 right-0 w-96 h-96 bg-yellow-400/5 rounded-full blur-[100px] translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-gray-100 rounded-full blur-[80px] -translate-x-1/2 translate-y-1/2"></div>
         <div class="container mx-auto px-6 relative z-10">
@@ -158,7 +164,7 @@ get_header();
     </section>
 
     <!-- SIMPLE SERVICES (Home Version) -->
-    <section class="py-24 bg-white">
+    <section class="py-16 bg-white">
         <div class="container mx-auto px-6 max-w-7xl">
             <div class="text-center mb-16">
                 <span class="text-yellow-600 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Our Expertise</span>
@@ -197,30 +203,31 @@ get_header();
     <!-- PROCESS SECTION -->
     <section class="py-16 bg-black text-white overflow-hidden">
       <div class="container mx-auto px-6">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">
-            Our <span class="text-yellow-400">Classified</span> Process
+        <div class="text-center mb-16">
+          <span class="text-yellow-400 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">How We Work</span>
+          <h2 class="text-4xl md:text-5xl font-heading font-black mb-6">
+            Our Proven <span class="text-yellow-400">Process</span>
           </h2>
-          <p class="text-gray-400 max-w-xl mx-auto text-base">
-            Success isn't accidental. It's the result of a rigorous, repeatable methodology refined over hundreds of campaigns.
+          <p class="text-gray-400 max-w-xl mx-auto text-lg font-medium leading-relaxed">
+            A simple, transparent workflow designed to get you results fast.
           </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 relative">
-          <div class="hidden lg:block absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400/30 to-transparent -z-0"></div>
+          <div class="hidden lg:block absolute top-[2.5rem] left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-400/20 to-transparent -z-0"></div>
           <?php 
           $steps = [
-              ['num' => '01', 'title' => 'We Plan', 'desc' => 'We study your business and plan the best strategy.'],
-              ['num' => '02', 'title' => 'We Create', 'desc' => 'We design the ads, posts, or website for you.'],
-              ['num' => '03', 'title' => 'We Launch', 'desc' => 'We put everything live to reach your customers.'],
-              ['num' => '04', 'title' => 'You Grow', 'desc' => 'You get more leads, sales, and popularity.'],
+              ['num' => '01', 'title' => 'Consultation', 'desc' => 'We analyze your business goals and identify opportunities for growth.'],
+              ['num' => '02', 'title' => 'Strategy', 'desc' => 'We create a custom roadmap tailored to your specific market and audience.'],
+              ['num' => '03', 'title' => 'Execution', 'desc' => 'Our experts implement the plan using cutting-edge tools and creativity.'],
+              ['num' => '04', 'title' => 'Result', 'desc' => 'We monitor results and refine strategies to maximize your ROI.'],
           ];
           foreach($steps as $st): ?>
-          <div class="relative z-10 flex flex-col items-center text-center">
-              <div class="w-16 h-16 rounded-full bg-gray-900 border-2 border-yellow-400 flex items-center justify-center text-2xl font-bold text-yellow-400 mb-6 shadow-[0_0_20px_rgba(250,204,21,0.2)]">
+          <div class="relative z-10 flex flex-col items-center text-center group">
+              <div class="w-20 h-20 rounded-full bg-gray-900 border-4 border-gray-800 flex items-center justify-center text-2xl font-black text-yellow-400 mb-8 shadow-[0_0_30px_rgba(250,204,21,0.15)] group-hover:border-yellow-400/50 transition-colors duration-300">
                 <?php echo $st['num']; ?>
               </div>
-              <h3 class="text-xl font-bold mb-3"><?php echo $st['title']; ?></h3>
-              <p class="text-sm text-gray-400 leading-relaxed"><?php echo $st['desc']; ?></p>
+              <h3 class="text-xl font-bold mb-4"><?php echo $st['title']; ?></h3>
+              <p class="text-sm text-gray-400 leading-relaxed font-medium px-2"><?php echo $st['desc']; ?></p>
             </div>
           <?php endforeach; ?>
         </div>
@@ -228,49 +235,62 @@ get_header();
     </section>
 
     <!-- TESTIMONIALS SECTION -->
-    <section class="py-20 bg-white relative overflow-hidden border-t border-gray-100">
+    <section class="py-16 bg-white relative overflow-hidden border-t border-gray-100">
         <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center mb-16">
+            <div class="text-center mb-10">
               <h2 class="text-4xl font-heading font-black mb-4 text-black">
                 Client <span class="text-yellow-500">Success Stories</span>
               </h2>
-              <p class="text-gray-500 text-base max-w-2xl mx-auto">
+              <p class="text-gray-500 text-base max-w-2xl mx-auto font-medium">
                  See what our partners have to say about our results-driven approach.
               </p>
             </div>
-            <!-- Simple Horizontal Scroll for Testimonials (simulating marquee) -->
-            <div class="relative w-full overflow-x-auto pb-8 hide-scrollbar">
-              <div class="flex space-x-8 min-w-max px-4">
-                <?php 
-                $testimonials = [
-                    ['author' => 'Aarav Sharma', 'role' => 'TechSolutions India', 'text' => 'We were struggling to get qualified leads. Classify Skill Education completely revamped our LinkedIn ads.', 'img' => 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150'],
-                    ['author' => 'Priya Patel', 'role' => 'The Ethnic Vibe', 'text' => 'Our followers grew by 20k in 4 months and sales doubled. Amazing team!', 'img' => 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=150'],
-                    ['author' => 'Rajesh Kumar', 'role' => 'Dream Homes', 'text' => 'I have worked with many agencies, but none delivered ROI like this.', 'img' => 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150'],
-                    ['author' => 'Sneha Gupta', 'role' => 'Glow Skincare', 'text' => 'My online sales are up 40% thanks to the new Shopify store.', 'img' => 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=150'],
-                    ['author' => 'Vikram Malhotra', 'role' => 'Iron Fitness', 'text' => 'We are now the top-rated gym in our area with a full batch.', 'img' => 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150'],
-                ];
-                foreach($testimonials as $t): ?>
-                <div class="w-[300px] md:w-[350px] flex-shrink-0 bg-white p-8 rounded-[32px] border border-gray-100 shadow-sm flex flex-col">
-                    <div class="flex items-center space-x-1 mb-6">
-                       <?php for($i=0; $i<5; $i++) echo '<i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>'; ?>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-8 font-medium italic flex-grow">"<?php echo $t['text']; ?>"</p>
-                    <div class="flex items-center mt-auto pt-6 border-t border-gray-50">
-                      <img src="<?php echo $t['img']; ?>" alt="<?php echo $t['author']; ?>" class="w-12 h-12 rounded-full mr-4 object-cover ring-2 ring-gray-50" />
-                      <div>
-                          <h5 class="font-bold text-sm text-black font-heading"><?php echo $t['author']; ?></h5>
-                          <p class="text-gray-400 text-xs font-bold uppercase tracking-wider"><?php echo $t['role']; ?></p>
-                      </div>
+            
+            <div class="relative group">
+                <!-- Nav Buttons -->
+                <button id="testi-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:bg-yellow-400 hover:border-yellow-400 transition-all -ml-4 md:-ml-6 hidden md:flex opacity-0 group-hover:opacity-100 duration-300 cursor-pointer">
+                    <i data-lucide="chevron-left" class="w-6 h-6 text-black"></i>
+                </button>
+                <button id="testi-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-lg hover:bg-yellow-400 hover:border-yellow-400 transition-all -mr-4 md:-mr-6 hidden md:flex opacity-0 group-hover:opacity-100 duration-300 cursor-pointer">
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-black"></i>
+                </button>
+
+                <!-- Slider Track Container -->
+                <div class="overflow-hidden px-2">
+                    <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out items-stretch">
+                        <?php 
+                        $testimonials = [
+                            ['author' => 'Arham Interior', 'role' => 'Interior Design', 'text' => 'CSE Marketing handled our social media marketing and paid ads with a clear focus on lead generation. We started receiving quality enquiries regularly, and our brand visibility improved significantly. Their strategy is practical and result-driven.'],
+                            ['author' => 'The New Nari', 'role' => 'Fashion & Clothing Brand', 'text' => 'As a growing fashion brand, we needed strong social media presence and sales support. CSE Marketing helped us with SMM and performance campaigns that resulted in increased engagement and consistent sales. Very professional execution.'],
+                            ['author' => 'OSR Foundation', 'role' => 'NGO / Social Organization', 'text' => 'CSE Marketing developed our website and managed our social media platforms. The website looks professional and has helped us reach more people online. Their team understood our purpose and delivered exactly what we needed.'],
+                            ['author' => 'Omkar Interior', 'role' => 'Interior Services', 'text' => 'CSE Marketing managed our Instagram, video editing, and lead generation. The content quality and reels performance improved a lot, and we started getting genuine enquiries. The team works fast and understands the interior market well.'],
+                            ['author' => 'Chaap & Curry Junction', 'role' => 'Food & Restaurant Brand', 'text' => 'CSE Marketing supported our brand with creative video editing and social media growth. Our reels started getting better reach, and our local audience engagement increased. Their content helped us build a strong food brand presence online.'],
+                            ['author' => 'Wear Vardaan', 'role' => 'Fashion & Clothing Brand', 'text' => 'CSE Marketing created our website and helped generate sales through digital channels. The website design is clean, user-friendly, and optimized for conversions. We saw a positive impact on our online sales.'],
+                            ['author' => 'Urban Lifestyle Store', 'role' => 'Retail & Lifestyle', 'text' => 'CSE Marketing provided complete digital marketing support including strategy, creatives, and ads. Everything was well-planned and performance-focused. We could clearly see improvement in reach, engagement, and enquiries.'],
+                            ['author' => 'Bloomify Studio', 'role' => 'Startup / Creative Brand', 'text' => 'CSE Marketing helped us build our digital presence from the ground up. From content creation to paid campaigns, everything was handled professionally. A reliable partner for brands looking for real growth.']
+                        ];
+                        foreach($testimonials as $t): ?>
+                        <div class="testimonial-slide w-full md:w-1/2 flex-shrink-0 px-3 md:px-4 box-border">
+                            <div class="bg-gray-50 p-8 rounded-[2rem] border border-gray-100 shadow-sm flex flex-col hover:border-yellow-400 transition-colors h-full">
+                                <div class="flex items-center space-x-1 mb-6">
+                                   <?php for($i=0; $i<5; $i++) echo '<i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>'; ?>
+                                </div>
+                                <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-8 font-medium italic flex-grow">"<?php echo $t['text']; ?>"</p>
+                                <div class="mt-auto pt-6 border-t border-gray-200">
+                                      <h5 class="font-bold text-base text-black font-heading"><?php echo $t['author']; ?></h5>
+                                      <p class="text-gray-400 text-xs font-bold uppercase tracking-wider"><?php echo $t['role']; ?></p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-                <?php endforeach; ?>
-              </div>
             </div>
         </div>
     </section>
 
     <!-- CTA SECTION -->
-    <section id="contact" class="py-20 bg-gray-50 relative overflow-hidden border-t border-gray-100">
+    <section id="contact" class="py-16 bg-gray-50 relative overflow-hidden border-t border-gray-100">
        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-400/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
        <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gray-200/40 rounded-full blur-[120px] pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
        <div class="container mx-auto px-6 relative z-10">

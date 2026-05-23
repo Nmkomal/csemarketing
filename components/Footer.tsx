@@ -131,8 +131,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 </div>
                 <div>
                     <span className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email Us</span>
-                    <a href="mailto:classifyskilleducation@gmail.com" className="text-gray-800 font-bold text-base lg:text-lg hover:text-yellow-600 transition-colors block break-all">
-                      classifyskilleducation@gmail.com
+                    <a href="mailto:info@csemarketing.com" className="text-gray-800 font-bold text-base lg:text-lg hover:text-yellow-600 transition-colors block break-all">
+                      info@csemarketing.com
                     </a>
                 </div>
               </li>
@@ -143,10 +143,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-gray-500 text-center md:text-left">
-          <p className="font-medium">© 2024 CSE Marketing. All Rights Reserved.</p>
+          <p className="font-medium">© 2019 CSE Marketing. All Rights Reserved.</p>
           <div className="flex space-x-8">
-            <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
+            <a href="#terms" onClick={(e) => handleNavClick(e, 'terms')} className="hover:text-black transition-colors">Terms & Conditions</a>
           </div>
         </div>
       </div>

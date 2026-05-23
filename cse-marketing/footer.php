@@ -91,8 +91,8 @@
                         </div>
                         <div>
                             <span class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Email Us</span>
-                            <a href="mailto:classifyskilleducation@gmail.com" class="text-gray-800 font-bold text-base lg:text-lg hover:text-yellow-600 transition-colors block break-all">
-                                classifyskilleducation@gmail.com
+                            <a href="mailto:info@csemarketing.com" class="text-gray-800 font-bold text-base lg:text-lg hover:text-yellow-600 transition-colors block break-all">
+                                info@csemarketing.com
                             </a>
                         </div>
                     </li>
@@ -102,10 +102,9 @@
 
         <!-- Bottom Bar -->
         <div class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-sm text-gray-500 text-center md:text-left">
-            <p class="font-medium">© <?php echo date('Y'); ?> Classify Skill Education. All Rights Reserved.</p>
+            <p class="font-medium">© 2019 Classify Skill Education. All Rights Reserved.</p>
             <div class="flex space-x-8">
-                <a href="#" class="hover:text-black transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-black transition-colors">Terms of Service</a>
+                <a href="<?php echo home_url('/terms'); ?>" class="hover:text-black transition-colors">Terms & Conditions</a>
             </div>
         </div>
     </div>

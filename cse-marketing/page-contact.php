@@ -49,14 +49,14 @@ get_header();
                     </a>
 
                     <!-- Email Card -->
-                    <a href="mailto:classifyskilleducation@gmail.com" class="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 group hover:border-yellow-400 transition-colors relative overflow-hidden h-full">
+                    <a href="mailto:info@csemarketing.com" class="bg-white p-5 rounded-[2rem] shadow-sm border border-gray-100 group hover:border-yellow-400 transition-colors relative overflow-hidden h-full">
                         <div class="relative z-10 flex flex-col h-full justify-between min-h-[110px]">
                             <div class="w-8 h-8 bg-gray-50 rounded-full flex items-center justify-center mb-3 text-black border border-gray-200 group-hover:bg-yellow-400 group-hover:border-yellow-400 transition-colors">
                                 <i data-lucide="mail" class="w-4 h-4"></i>
                             </div>
                             <div>
                                 <h3 class="text-[10px] font-bold text-gray-400 mb-0.5 uppercase tracking-wider">Email Us</h3>
-                                <p class="text-sm font-heading font-bold text-black break-words leading-tight">classifyskilleducation@gmail.com</p>
+                                <p class="text-sm font-heading font-bold text-black break-words leading-tight">info@csemarketing.com</p>
                             </div>
                         </div>
                     </a>
@@ -89,7 +89,7 @@ get_header();
                             <i data-lucide="map-pin" class="w-5 h-5"></i>
                         </div>
                         <div>
-                            <h3 class="text-lg font-bold text-black mb-1">Visit Our Lab</h3>
+                            <h3 class="text-lg font-bold text-black mb-1">Visit Our Office</h3>
                             <p class="text-gray-500 font-medium leading-relaxed text-xs sm:text-sm max-w-md">
                                 Pillar number 783, metro station, Dwarka Mor, Uttam Nagar, Bhagwati Garden, Nawada, New delhi, Delhi, 110059
                             </p>
@@ -132,7 +132,7 @@ get_header();
                         <label class="text-[10px] font-black uppercase tracking-widest text-gray-400 ml-1 group-focus-within:text-yellow-600 transition-colors">Email Address</label>
                         <div class="relative">
                             <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-300 group-focus-within:text-yellow-500 transition-colors"></i>
-                            <input name="email" type="email" placeholder="classifyskilleducation@gmail.com" class="w-full h-12 pl-10 pr-4 bg-white rounded-lg border-2 border-transparent focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-300 transition-all text-xs shadow-sm" />
+                            <input name="email" type="email" placeholder="info@csemarketing.com" class="w-full h-12 pl-10 pr-4 bg-white rounded-lg border-2 border-transparent focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-300 transition-all text-xs shadow-sm" />
                         </div>
                     </div>
 

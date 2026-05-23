@@ -22,15 +22,15 @@ $benefits = $data ? $data['benefits'] : [];
 ?>
 
 <div class="bg-white min-h-screen pb-24">
-    <!-- 1. Premium Hero Banner -->
-    <section class="relative pt-32 pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-gray-50 rounded-b-[40px] md:rounded-b-[60px] border-b border-gray-100">
+    <!-- 1. Premium Hero Banner - Compacted -->
+    <section class="relative pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden bg-gray-50 rounded-b-[40px] md:rounded-b-[60px] border-b border-gray-100">
         <!-- Background Elements -->
         <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-yellow-400/10 rounded-full blur-[80px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
         <div class="absolute inset-0 opacity-20 mix-blend-multiply pointer-events-none" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg');"></div>
 
         <div class="container mx-auto px-6 relative z-10">
             <!-- Back Nav -->
-            <a href="<?php echo home_url('/services'); ?>" class="group flex items-center text-xs font-black uppercase tracking-widest text-gray-400 hover:text-black transition-colors mb-12 w-fit">
+            <a href="<?php echo home_url('/services'); ?>" class="group flex items-center text-xs font-black uppercase tracking-widest text-gray-400 hover:text-black transition-colors mb-10 w-fit">
                 <div class="w-8 h-8 rounded-full bg-white border border-gray-200 flex items-center justify-center mr-3 group-hover:border-black transition-colors">
                     <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"></i>
                 </div>
@@ -40,22 +40,22 @@ $benefits = $data ? $data['benefits'] : [];
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Left Content -->
                 <div>
-                    <span class="inline-block py-2 px-5 rounded-full bg-white border border-gray-200 text-yellow-600 text-[10px] font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
+                    <span class="inline-block py-2 px-5 rounded-full bg-white border border-gray-200 text-yellow-600 text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-sm">
                         Service Spotlight
                     </span>
-                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-heading font-black mb-8 leading-[1.1] text-black">
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-heading font-black mb-6 leading-[1.1] text-black">
                         <?php echo esc_html($title); ?>
                     </h1>
-                    <p class="text-xl md:text-2xl text-gray-500 leading-relaxed mb-10 font-medium max-w-xl">
+                    <p class="text-lg md:text-xl text-gray-500 leading-relaxed mb-8 font-medium max-w-xl">
                         <?php echo esc_html($overview); ?>
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="<?php echo home_url('/contact'); ?>" class="inline-flex items-center justify-center h-16 px-10 rounded-2xl bg-yellow-400 text-black font-bold text-lg shadow-xl shadow-yellow-400/20 hover:scale-105 transition-transform">
+                        <a href="<?php echo home_url('/contact'); ?>" class="inline-flex items-center justify-center h-14 px-8 rounded-2xl bg-yellow-400 text-black font-bold text-base shadow-xl shadow-yellow-400/20 hover:scale-105 transition-transform">
                             Book Free Strategy Call <i data-lucide="arrow-right" class="ml-2 w-5 h-5"></i>
                         </a>
                     </div>
                     
-                    <div class="mt-10 flex items-center space-x-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
+                    <div class="mt-8 flex items-center space-x-2 text-xs font-bold text-gray-400 uppercase tracking-wider">
                         <div class="flex text-yellow-400">
                             <?php for($i=0; $i<5; $i++) echo '<i data-lucide="star" class="w-4 h-4 fill-current"></i>'; ?>
                         </div>

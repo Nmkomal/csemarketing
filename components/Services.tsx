@@ -1,8 +1,8 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { SERVICES, SERVICE_DETAILS, PROCESS_STEPS } from '../constants';
 import { CTA } from './CTA';
-import { Check, ArrowRight, Zap } from 'lucide-react';
+import { Check, ArrowRight, Zap, X, User, Phone, Mail, Send } from 'lucide-react';
 import { Button } from './Button';
 
 interface ServicesProps {
@@ -12,12 +12,47 @@ interface ServicesProps {
 }
 
 export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, isSimple = false }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedServiceTitle, setSelectedServiceTitle] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: ''
+  });
+
+  const handleBookClick = (e: React.MouseEvent, title: string) => {
+    e.stopPropagation();
+    setSelectedServiceTitle(title);
+    setIsModalOpen(true);
+  };
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    // Enforce 10 digit number for phone
+    if (e.target.name === 'phone') {
+        value = value.replace(/\D/g, '').slice(0, 10);
+    }
+    setFormData({ ...formData, [e.target.name]: value });
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(!formData.name || formData.phone.length !== 10) return;
+
+    const text = `Hi CSE Marketing,%0A%0AI am interested in booking your service: *${selectedServiceTitle}*%0A%0A*My Details:*%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email || 'Not provided'}`;
+    window.open(`https://wa.me/919711044849?text=${text}`, '_blank');
+    setIsModalOpen(false);
+    setFormData({ name: '', phone: '', email: '' });
+  };
+
+  const isPhoneValid = formData.phone.length === 10;
+
   // 1. Simplified Version (For Home Page Section)
   if (isSimple) {
     return (
-      <section id="services-section" className="py-24 bg-white">
+      <section id="services-section" className="py-12 bg-white">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <span className="text-yellow-600 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Our Expertise</span>
             <h2 className="text-4xl md:text-5xl font-heading font-black mb-6 text-black">
               Digital <span className="text-yellow-500">Services.</span>
@@ -27,7 +62,7 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             {SERVICES.map((service) => {
               const Icon = service.icon;
               return (
@@ -68,8 +103,8 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
   return (
     <div className="bg-white min-h-screen w-full overflow-hidden relative">
       
-      {/* 1. Services Banner Section */}
-      <section className="w-full relative pt-32 pb-20 md:py-32 bg-gray-50 rounded-b-[3rem] md:rounded-b-[5rem] overflow-hidden mb-24 border-b border-gray-100">
+      {/* 1. Services Banner Section - Compacted */}
+      <section className="w-full relative pt-24 pb-12 md:pt-28 md:pb-16 bg-gray-50 rounded-b-[3rem] md:rounded-b-[5rem] overflow-hidden mb-12 border-b border-gray-100">
          {/* Background Elements */}
          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-multiply pointer-events-none"></div>
          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-yellow-400/10 rounded-full blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
@@ -77,17 +112,17 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
 
          <div className="container mx-auto px-6 relative z-10">
             <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
-                <span className="inline-flex items-center px-5 py-2 rounded-full bg-white border border-gray-200 text-yellow-600 text-xs font-black uppercase tracking-[0.2em] mb-8 shadow-sm">
+                <span className="inline-flex items-center px-5 py-2 rounded-full bg-white border border-gray-200 text-yellow-600 text-xs font-black uppercase tracking-[0.2em] mb-6 shadow-sm">
                   <Zap className="w-4 h-4 mr-2 text-yellow-500 fill-current" />
                   Full-Service Agency
                 </span>
                 
-                <h1 className="text-5xl sm:text-6xl md:text-8xl font-heading font-black mb-10 leading-[1.1] text-black tracking-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl font-heading font-black mb-8 leading-[1.1] text-black tracking-tight">
                   We Build <br/>
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-600">Growth Engines.</span>
                 </h1>
                 
-                <p className="text-lg md:text-2xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium mb-12">
+                <p className="text-base md:text-xl text-gray-500 max-w-3xl mx-auto leading-relaxed font-medium mb-10">
                   From pixel-perfect designs to high-ROI ad campaigns, our services are engineered to scale your revenue.
                 </p>
 
@@ -95,7 +130,7 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
                   <Button 
                     variant="primary" 
                     size="lg" 
-                    className="h-16 px-12 rounded-2xl text-lg shadow-xl shadow-yellow-400/20 w-full sm:w-auto hover:scale-105"
+                    className="h-14 px-10 rounded-2xl text-base font-bold shadow-xl shadow-yellow-400/20 w-full sm:w-auto hover:scale-105"
                     onClick={() => window.location.hash = 'contact'}
                   >
                     Start a Project <ArrowRight className="ml-2 w-5 h-5" />
@@ -103,7 +138,7 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
                   <Button 
                      variant="outline" 
                      size="lg"
-                     className="h-16 px-12 rounded-2xl text-lg w-full sm:w-auto bg-white hover:bg-gray-100"
+                     className="h-14 px-10 rounded-2xl text-base font-bold w-full sm:w-auto bg-white hover:bg-gray-100"
                      onClick={() => {
                         const el = document.getElementById('all-services');
                         if(el) el.scrollIntoView({ behavior: 'smooth' });
@@ -116,9 +151,9 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
          </div>
       </section>
 
-      {/* 2. Services List */}
-      <section id="all-services" className="container mx-auto px-6 max-w-7xl mb-32 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* 2. Services List - Reduced Margin */}
+      <section id="all-services" className="container mx-auto px-6 max-w-7xl mb-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((service) => {
             const details = SERVICE_DETAILS[service.id];
             const Icon = service.icon;
@@ -163,10 +198,7 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
                     <Button 
                         variant="outline" 
                         className="w-full rounded-xl border-gray-200 hover:bg-yellow-400 hover:border-yellow-400 hover:text-black group-hover:bg-black group-hover:text-white group-hover:border-black transition-all"
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            window.location.hash = 'contact';
-                        }}
+                        onClick={(e) => handleBookClick(e, service.title)}
                     >
                         Book This Service <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
@@ -177,14 +209,14 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
         </div>
       </section>
 
-      {/* 3. Proven Process Section */}
-      <section className="py-24 bg-black text-white rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden">
+      {/* 3. Proven Process Section - Padding Adjusted */}
+      <section className="py-12 bg-black text-white rounded-t-[3rem] md:rounded-t-[5rem] overflow-hidden">
         <div className="container mx-auto px-6 max-w-7xl text-center relative z-10">
             <span className="text-yellow-400 font-bold uppercase tracking-[0.2em] text-xs mb-4 block">How We Work</span>
             <h2 className="text-4xl md:text-5xl font-heading font-black mb-6 text-white">
                Our Proven <span className="text-yellow-500">Process</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-16 font-medium">
+            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-medium">
                A simple, transparent workflow designed to get you results fast.
             </p>
             
@@ -208,6 +240,85 @@ export const Services: React.FC<ServicesProps> = ({ onServiceClick, onNavigate, 
 
       {/* 4. CTA */}
       <CTA />
+
+      {/* Popup Modal */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 animate-fade-in">
+            {/* Backdrop */}
+            <div 
+                className="absolute inset-0 bg-black/70 backdrop-blur-md transition-opacity" 
+                onClick={() => setIsModalOpen(false)}
+            ></div>
+            
+            {/* Modal Content */}
+            <div className="relative bg-white rounded-[2.5rem] w-full max-w-md p-8 md:p-10 shadow-2xl scale-100 opacity-100 transition-all transform">
+                <button 
+                    onClick={() => setIsModalOpen(false)}
+                    className="absolute top-6 right-6 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                >
+                    <X className="w-5 h-5 text-gray-600" />
+                </button>
+
+                <div className="text-center mb-8">
+                    <span className="inline-block py-1 px-3 rounded-full bg-yellow-100 text-yellow-700 text-[10px] font-black uppercase tracking-widest mb-3">
+                        Book Service
+                    </span>
+                    <h3 className="text-2xl font-heading font-black text-black leading-tight">
+                        {selectedServiceTitle}
+                    </h3>
+                    <p className="text-gray-500 text-sm mt-2 font-medium">
+                        Fill the form below to get a quick quote or consultation for this service.
+                    </p>
+                </div>
+
+                <form onSubmit={handleFormSubmit} className="space-y-4">
+                    <div className="relative group">
+                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-yellow-500 transition-colors" />
+                        <input 
+                            name="name"
+                            value={formData.name}
+                            onChange={handleFormChange}
+                            required 
+                            placeholder="Your Name *" 
+                            className="w-full h-12 pl-10 pr-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-400 transition-all text-sm" 
+                        />
+                    </div>
+                    <div className="relative group">
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-yellow-500 transition-colors" />
+                        <input 
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleFormChange}
+                            required 
+                            type="tel" 
+                            placeholder="Phone Number (10 digits) *" 
+                            className="w-full h-12 pl-10 pr-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-400 transition-all text-sm" 
+                        />
+                    </div>
+                    <div className="relative group">
+                        <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-yellow-500 transition-colors" />
+                        <input 
+                            name="email"
+                            value={formData.email}
+                            onChange={handleFormChange}
+                            type="email" 
+                            placeholder="Email Address (Optional)" 
+                            className="w-full h-12 pl-10 pr-4 bg-gray-50 rounded-xl border-2 border-transparent focus:bg-white focus:border-yellow-400 outline-none font-bold text-black placeholder:text-gray-400 transition-all text-sm" 
+                        />
+                    </div>
+
+                    <Button 
+                        type="submit" 
+                        variant="primary" 
+                        disabled={!isPhoneValid}
+                        className={`w-full h-14 rounded-xl text-base font-bold shadow-xl shadow-yellow-400/20 hover:shadow-yellow-400/40 transition-all mt-2 ${!isPhoneValid ? 'opacity-50 cursor-not-allowed bg-gray-300 text-gray-500 hover:bg-gray-300 hover:text-gray-500' : ''}`}
+                    >
+                        Send Request <Send className="ml-2 w-4 h-4" />
+                    </Button>
+                </form>
+            </div>
+        </div>
+      )}
 
     </div>
   );

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
@@ -12,15 +12,15 @@ import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { AgencyStats } from './components/AgencyStats';
 
-// Lazy Load Pages to reduce initial bundle size
-// We use a helper promise to handle named exports with React.lazy
-const ServicePage = lazy(() => import('./components/ServicePage').then(module => ({ default: module.ServicePage })));
-const PortfolioPage = lazy(() => import('./components/PortfolioPage').then(module => ({ default: module.PortfolioPage })));
-const IndustryPage = lazy(() => import('./components/IndustryPage').then(module => ({ default: module.IndustryPage })));
-const ContactPage = lazy(() => import('./components/ContactPage').then(module => ({ default: module.ContactPage })));
-const QuotePage = lazy(() => import('./components/QuotePage').then(module => ({ default: module.QuotePage })));
-const FaqPage = lazy(() => import('./components/FaqPage').then(module => ({ default: module.FaqPage })));
-const AboutUsPage = lazy(() => import('./components/AboutUsPage').then(module => ({ default: module.AboutUsPage })));
+// Static imports to eliminate dynamic chunk loading and make tab transitions instant
+import { ServicePage } from './components/ServicePage';
+import { PortfolioPage } from './components/PortfolioPage';
+import { IndustryPage } from './components/IndustryPage';
+import { ContactPage } from './components/ContactPage';
+import { QuotePage } from './components/QuotePage';
+import { FaqPage } from './components/FaqPage';
+import { AboutUsPage } from './components/AboutUsPage';
+import { TermsPage } from './components/TermsPage';
 
 // Simple Loading Component
 const PageLoader = () => (
@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     const handleHash = () => {
       const hash = window.location.hash.replace('#', '');
-      const validPages = ['portfolio', 'industries-page', 'contact', 'quote', 'faq', 'services', 'about-us'];
+      const validPages = ['portfolio', 'industries-page', 'contact', 'quote', 'faq', 'services', 'about-us', 'terms'];
       
       if (hash) {
         if (validPages.includes(hash)) {
@@ -81,14 +81,25 @@ function App() {
         return (
           <>
             <Hero />
-            <section className="py-10 bg-white border-y border-gray-100 overflow-hidden">
+            <section className="py-6 bg-white border-y border-gray-100 overflow-hidden">
               <div className="container mx-auto px-6">
-                <p className="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-8">Trusted By Global Innovators</p>
-                <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-700">
-                  {['TECHNO', 'GrowthX', 'Aura', 'PRISM.', 'MODERN', 'ELITE'].map((brand) => (
-                    <span key={brand} className="text-xl font-black tracking-tighter hover:text-black transition-colors cursor-default">
-                      {brand}
-                    </span>
+                <p className="text-center text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-6">Trusted By Global Innovators</p>
+                <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
+                  {[
+                    "https://i.postimg.cc/NMxMJWtS/1.png",
+                    "https://i.postimg.cc/ZqQR1ryh/2.png",
+                    "https://i.postimg.cc/g2w1g8dw/3.png",
+                    "https://i.postimg.cc/7brJjSdq/4.png",
+                    "https://i.postimg.cc/wjyB8wDT/5.png",
+                    "https://i.postimg.cc/L6yV08VF/6.png"
+                  ].map((logo, index) => (
+                    <img 
+                      key={index} 
+                      src={logo} 
+                      alt={`Partner Brand ${index + 1}`} 
+                      className="h-10 md:h-14 w-auto object-contain hover:scale-110 transition-transform duration-300"
+                      loading="lazy"
+                    />
                   ))}
                 </div>
               </div>
@@ -117,6 +128,8 @@ function App() {
         return <Services onServiceClick={(id) => navigateTo(id)} onNavigate={navigateTo} isSimple={false} />;
       case 'about-us':
         return <AboutUsPage />;
+      case 'terms':
+        return <TermsPage />;
       default:
         if (currentView.length > 0) {
           return <ServicePage serviceId={currentView} onBack={() => navigateTo('services')} />;
